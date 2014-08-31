@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<fileformat>
+	<version>
+		<name>UT2004</name>
+	</version>
+	<flags>
+		<group>
+			<name>Function</name>
+			<desc>Function flags</desc>
+			<flag><id>0x00000001</id><name>Final</name><desc>Function is final (prebindable, non-overridable function).</desc></flag>
+			<flag><id>0x00000002</id><name>Defined</name><desc>Function has been defined (not just declared).</desc></flag>
+			<flag><id>0x00000004</id><name>Iterator</name><desc>Function is an iterator.</desc></flag>
+			<flag><id>0x00000008</id><name>Latent</name><desc>Function is a latent state function.</desc></flag>
+			<flag><id>0x00000010</id><name>PreOperator</name><desc>Unary operator is a prefix operator.</desc></flag>
+			<flag><id>0x00000020</id><name>Singular</name><desc>Function cannot be reentered.</desc></flag>
+			<flag><id>0x00000040</id><name>Net</name><desc>Function is network-replicated.</desc></flag>
+			<flag><id>0x00000080</id><name>NetReliable</name><desc>Function should be sent reliably on the network.</desc></flag>
+			<flag><id>0x00000100</id><name>Simulated</name><desc>Function executed on the client side.</desc></flag>
+			<flag><id>0x00000200</id><name>Exec</name><desc>Executable from command line.</desc></flag>
+			<flag><id>0x00000400</id><name>Native</name><desc>Native function.</desc></flag>
+			<flag><id>0x00000800</id><name>Event</name><desc>Event function.</desc></flag>
+			<flag><id>0x00001000</id><name>Operator</name><desc>Operator function.</desc></flag>
+			<flag><id>0x00002000</id><name>Static</name><desc>Static function.</desc></flag>
+			<flag><id>0x00004000</id><name>NoExport</name><desc>Don't export intrinsic function to C++.</desc></flag>
+			<flag><id>0x00008000</id><name>Const</name><desc>Function doesn't modify this object.</desc></flag>
+			<flag><id>0x00010000</id><name>Invariant</name><desc>Return value is purely dependent on parameters; no state dependencies or internal state changes</desc></flag>
+			<flag><id>0x00020000</id><name>Public</name><desc>Can be accessed from all classes.</desc></flag>
+			<flag><id>0x00040000</id><name>Private</name><desc>Can be accessed only from the class it's in; no other classes (including subclasses) may access it.</desc></flag>
+			<flag><id>0x00080000</id><name>Protected</name><desc>Can be accessed from the class and it's subclasses, not from other classes.</desc></flag>
+			<flag><id>0x00100000</id><name>Delegate</name><desc>Function is a delegate.</desc></flag>	
+		</group>
+		<group>
+			<name>State</name>
+			<desc>State flags</desc>
+			<flag><id>0x00000001</id><name>Editable</name><desc>State should be user-selectable in UnrealEd.</desc></flag>
+			<flag><id>0x00000002</id><name>Auto</name><desc>State is automatic (the default state).</desc></flag>
+			<flag><id>0x00000004</id><name>Simulated</name><desc>State executes on client side.</desc></flag>		
+		</group>
+		<group>
+			<name>Load</name>
+			<desc>Load flags</desc>
+			<flag><id>0x00000000</id><name>Propagate</name><desc></desc></flag>
+			<flag><id>0x00000000</id><name>None</name><desc>No flags.</desc></flag>
+			<flag><id>0x00000001</id><name>NoFail</name><desc>Critical error if load fails.</desc></flag>
+			<flag><id>0x00000002</id><name>NoWarn</name><desc>Don't display warning if load fails.</desc></flag>
+			<flag><id>0x00000008</id><name>Throw</name><desc>Throw exceptions upon failure.</desc></flag>
+			<flag><id>0x00000010</id><name>Verify</name><desc>Only verify existance; don't actually load.</desc></flag>
+			<flag><id>0x00000020</id><name>AllowDll</name><desc>Allow plain DLLs.</desc></flag>
+			<flag><id>0x00000040</id><name>DisallowFiles</name><desc>Don't load from file.</desc></flag>
+			<flag><id>0x00000080</id><name>NoVerify</name><desc>Don't verify imports yet.</desc></flag>
+			<flag><id>0x00001000</id><name>Forgiving</name><desc>Forgive missing imports (set them to NULL).</desc></flag>
+			<flag><id>0x00002000</id><name>Quiet</name><desc>No log warnings.</desc></flag>
+			<flag><id>0x00004000</id><name>NoRemap</name><desc>No remapping of packages.</desc></flag>		
+		</group>
+		<group>
+			<name>Package</name>
+			<desc>Package flags</desc>
+			<flag><id>0x00000001</id><name>AllowDownload</name><desc>Allow downloading package.</desc></flag>
+			<flag><id>0x00000002</id><name>ClientOptional</name><desc>Purely optional for clients.</desc></flag>
+			<flag><id>0x00000004</id><name>ServerSideOnly</name><desc>Only needed on the server side.</desc></flag>
+			<flag><id>0x00000008</id><name>BrokenLinks</name><desc>Loaded from linker with broken import links.</desc></flag>
+			<flag><id>0x00000010</id><name>Unsecure</name><desc>Not trusted.</desc></flag>
+			<flag><id>0x00008000</id><name>Need</name><desc>Client needs to download this package.</desc></flag>		
+		</group>
+		<group>
+			<name>Class</name>
+			<desc>Class flags</desc>
+			<flag><id>0x00000001</id><name>Abstract</name><desc>Class is abstract and can't be instantiated directly.</desc></flag>
+			<flag><id>0x00000002</id><name>Compiled</name><desc>Script has been compiled successfully.</desc></flag>
+			<flag><id>0x00000004</id><name>Config</name><desc>Load object configuration at construction time.</desc></flag>
+			<flag><id>0x00000008</id><name>Transient</name><desc>This object type can't be saved; null it out at save time.</desc></flag>
+			<flag><id>0x00000010</id><name>Parsed</name><desc>Successfully parsed.</desc></flag>
+			<flag><id>0x00000020</id><name>Localized</name><desc>Class contains localized text.</desc></flag>
+			<flag><id>0x00000040</id><name>SafeReplace</name><desc>Objects of this class can be safely replaced with default or NULL.</desc></flag>
+			<flag><id>0x00000080</id><name>RuntimeStatic</name><desc>Objects of this class are static during gameplay.</desc></flag>
+			<flag><id>0x00000100</id><name>NoExport</name><desc>Don't export to C++ header.</desc></flag>
+			<flag><id>0x00000200</id><name>Placeable</name><desc>Can be placed in editor.</desc></flag>
+			<flag><id>0x00000400</id><name>PerObjectConfig</name><desc>Handle object configuration on a per-object basis, rather than per-class.</desc></flag>
+			<flag><id>0x00000800</id><name>NativeReplication</name><desc>Replication handled in C++.</desc></flag>
+			<flag><id>0x00001000</id><name>EditInlineNew</name><desc>Allows an instance of this object to be created inline within UnrealEd.</desc></flag>
+			<flag><id>0x00002000</id><name>CollapseCategories</name><desc>All categories will be collapsed to a single category.</desc></flag>
+		</group>
+		<group>
+			<name>Property</name>
+			<desc>Property flags</desc>
+			<flag><id>0x00000001</id><name>Edit</name><desc>Property is user-settable in the editor.</desc></flag>
+			<flag><id>0x00000002</id><name>Const</name><desc>Actor's property always matches class's default actor property.</desc></flag>
+			<flag><id>0x00000004</id><name>Input</name><desc>Variable is writable by the input system.</desc></flag>
+			<flag><id>0x00000008</id><name>ExportObject</name><desc>Object can be exported with actor.</desc></flag>
+			<flag><id>0x00000010</id><name>OptionalParm</name><desc>Optional parameter (if CPF_Param is set).</desc></flag>
+			<flag><id>0x00000020</id><name>Net</name><desc>Property is relevant to network replication.</desc></flag>
+			<flag><id>0x00000040</id><name>EditConstArray</name><desc></desc></flag>
+			<flag><id>0x00000080</id><name>Parm</name><desc>Function/When call parameter.</desc></flag>
+			<flag><id>0x00000100</id><name>OutParm</name><desc>Value is copied out after function call.</desc></flag>
+			<flag><id>0x00000200</id><name>SkipParm</name><desc>Property is a short-circuitable evaluation function parm.</desc></flag>
+			<flag><id>0x00000400</id><name>ReturnParm</name><desc>Return value.</desc></flag>
+			<flag><id>0x00000800</id><name>CoerceParm</name><desc>Coerce args into this function parameter.</desc></flag>
+			<flag><id>0x00001000</id><name>Native</name><desc>Property is native: C++ code is responsible for serializing it.</desc></flag>
+			<flag><id>0x00002000</id><name>Transient</name><desc>Property is transient: shouldn't be saved, zero-filled at load time.</desc></flag>
+			<flag><id>0x00004000</id><name>Config</name><desc>Property should be loaded/saved as permanent profile.</desc></flag>
+			<flag><id>0x00008000</id><name>Localized</name><desc>Property should be loaded as localizable text.</desc></flag>
+			<flag><id>0x00010000</id><name>Travel</name><desc>Property travels across levels/servers.</desc></flag>
+			<flag><id>0x00020000</id><name>EditConst</name><desc>Property is uneditable in the editor.</desc></flag>
+			<flag><id>0x00040000</id><name>GlobalConfig</name><desc>Load config from base class, not subclass.</desc></flag>
+			<flag><id>0x00100000</id><name>OnDemand</name><desc>Object or dynamic array loaded on demand only.</desc></flag>
+			<flag><id>0x00200000</id><name>New</name><desc>Automatically create inner object.</desc></flag>
+			<flag><id>0x00400000</id><name>NeedCtorLink</name><desc>Fields need construction/destruction.</desc></flag>
+			<flag><id>0x00800000</id><name>NoExport</name><desc>This will prevent the class from being exported automatically to the header file.</desc></flag>	
+			<flag><id>0x01000000</id><name>Button</name><desc>?</desc></flag>	
+			<flag><id>0x02000000</id><name>Comment</name><desc>Has serialized comment for UnrealEd property inspector.</desc></flag>	
+			<flag><id>0x04000000</id><name>EditInline</name><desc>This object reference can be edited inline within UnrealEd's property inspector.</desc></flag>	
+			<flag><id>0x08000000</id><name>EdFindable</name><desc>Allows this actor to be findable within the editor.</desc></flag>	
+			<flag><id>0x10000000</id><name>EditInlineUse</name><desc>Similar to editinline, editinlineuse will also add a "use" button for the property.</desc></flag>	
+			<flag><id>0x20000000</id><name>Deprecated</name><desc>The compiler will print a warning.</desc></flag>	
+			<flag><id>0x40000000</id><name>EditInlineNotify</name><desc>This will notify the outer object if the property is changed.</desc></flag>	
+		</group>
+		<group>
+			<name>Object</name>
+			<desc>Object flags</desc>
+			<flag><id>0x00000001</id><name>Transactional</name><desc>Object is transactional.</desc></flag>
+			<flag><id>0x00000002</id><name>Unreachable</name><desc>Object is not reachable on the object graph.</desc></flag>
+			<flag><id>0x00000004</id><name>Public</name><desc>Object is visible outside its package.</desc></flag>
+			<flag><id>0x00000008</id><name>TagImp</name><desc>Temporary import tag in load/save.</desc></flag>
+			<flag><id>0x00000010</id><name>TagExp</name><desc>Temporary export tag in load/save.</desc></flag>
+			<flag><id>0x00000020</id><name>SourceModified</name><desc>Modified relative to source files.</desc></flag>
+			<flag><id>0x00000040</id><name>TagGarbage</name><desc>Check during garbage collection.</desc></flag>
+			<flag><id>0x00000080</id><name>Private</name><desc>Can be accessed only from the class it's in.</desc></flag>
+			<flag><id>0x00000200</id><name>NeedLoad</name><desc>During load, indicates object needs loading.</desc></flag>
+			<flag><id>0x00000400</id><name>HighlightedName</name><desc>A hardcoded name which should be syntax-highlighted.</desc></flag>
+			<flag><id>0x00000400</id><name>EliminateObject</name><desc>NULL out references to this during garbage collecion.</desc></flag>
+			<flag><id>0x00000800</id><name>InSingularFunc</name><desc>In a singular function.</desc></flag>
+			<flag><id>0x00000800</id><name>RemappedName</name><desc>Name is remapped.</desc></flag>
+			<flag><id>0x00001000</id><name>Suppress</name><desc>Suppressed log name.</desc></flag>
+			<flag><id>0x00001000</id><name>StateChanged</name><desc>Object did a state change.</desc></flag>
+			<flag><id>0x00002000</id><name>InEndState</name><desc>Within an EndState call.</desc></flag>
+			<flag><id>0x00004000</id><name>Transient</name><desc>Don't save object.</desc></flag>
+			<flag><id>0x00008000</id><name>Preloading</name><desc>Data is being preloaded from file.</desc></flag>
+			<flag><id>0x00010000</id><name>LoadForClient</name><desc>In-file load for client.</desc></flag>
+			<flag><id>0x00020000</id><name>LoadForServer</name><desc>In-file load for client.</desc></flag>
+			<flag><id>0x00040000</id><name>LoadForEdit</name><desc>In-file load for client.</desc></flag>
+			<flag><id>0x00080000</id><name>Standalone</name><desc>Keep object around for editing even if unreferenced.</desc></flag>
+			<flag><id>0x00100000</id><name>NotForClient</name><desc>Don't load this object for the game client.</desc></flag>
+			<flag><id>0x00200000</id><name>NotForServer</name><desc>Don't load this object for the game server.</desc></flag>
+			<flag><id>0x00400000</id><name>NotForEdit</name><desc>Don't load this object for the editor.</desc></flag>
+			<flag><id>0x00800000</id><name>Destroyed</name><desc>Object Destroy has already been called.</desc></flag>
+			<flag><id>0x01000000</id><name>NeedPostLoad</name><desc>Object needs to be postloaded.</desc></flag>
+			<flag><id>0x02000000</id><name>HasStack</name><desc>Has execution stack.</desc></flag>
+			<flag><id>0x04000000</id><name>Native</name><desc>Native (UClass only).</desc></flag>
+			<flag><id>0x08000000</id><name>Marked</name><desc>Marked (for debugging).</desc></flag>
+			<flag><id>0x10000000</id><name>ErrorShutdown</name><desc>ShutdownAfterError called.</desc></flag>
+			<flag><id>0x20000000</id><name>DebugPostLoad</name><desc>For debugging Serialize calls.</desc></flag>
+			<flag><id>0x40000000</id><name>DebugSerialize</name><desc>For debugging Serialize calls.</desc></flag>
+			<flag><id>0x80000000</id><name>DebugDestroy</name><desc>For debugging Destroy calls.</desc></flag>
+		</group>
+	</flags>
+</fileformat>

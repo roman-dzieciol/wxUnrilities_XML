@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<object>
+		<name>Header</name>
+		<data>
+			<var><type>DWORD</type><name>Signature</name></var>
+			<assert test="Eq(Var(Signature),0x9E2A83C1)"/>
+			<var><type>WORD</type><name>Version</name></var>
+			<var><type>WORD</type><name>License</name></var>
+			<var><type>DWORD</type><name>Flags</name></var>
+			<var><type>OBJECT</type><name>NameTable</name></var>
+			<var><type>OBJECT</type><name>ExportTable</name></var>
+			<var><type>OBJECT</type><name>ImportTable</name></var>
+			<var><type>GUID</type><name>GUID</name></var>
+			<var><type>OBJECT</type><name>GenerationTable</name></var>
+
+		</data>
+	</object>
+	
+	<object>
+		<name>GenerationTable</name>
+		<data>
+			<var><type>DWORD</type><name>Count</name></var>
+			<array count="Var(Count)">
+				<name>Table</name>
+				<var><type>DWORD</type><name>ExportCount</name></var>
+				<var><type>DWORD</type><name>NameCount</name></var>
+			</array>
+		</data>
+	</object>	
+
+	<object>
+		<name>NameTable</name>
+		<data>
+			<var><type>DWORD</type><name>Count</name></var>
+			<var><type>DWORD</type><name>Offset</name></var>
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var><type>OBJECT</type><name>NameItem</name></var>
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>ExportTable</name>
+		<data>
+			<var><type>DWORD</type><name>Count</name></var>
+			<var><type>DWORD</type><name>Offset</name></var>
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var><type>OBJECT</type><name>ExportItem</name></var>
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>ImportTable</name>
+		<data>
+			<var><type>DWORD</type><name>Count</name></var>
+			<var><type>DWORD</type><name>Offset</name></var>
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var><type>OBJECT</type><name>ImportItem</name></var>
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>NameItem</name>
+		<data>
+			<var><type>LASCIIZ</type><name>Name</name></var>
+			<var><type>DWORD</type><name>Flags</name></var>
+		</data>
+	</object>
+
+	<object>
+		<name>ExportItem</name>
+		<data>
+			<var><type>INDEX</type><name>Class</name></var>
+			<var><type>INDEX</type><name>Super</name></var>
+			<var><type>INT32</type><name>Package</name></var>
+			<var><type>INDEX</type><name>ObjectName</name></var>
+			<var><type>DWORD</type><name>ObjectFlags</name></var>
+			<var><type>INDEX</type><name>SerialSize</name></var>
+			<if test="Neq(Var(SerialSize),0)">
+				<var><type>INDEX</type><name>SerialOffset</name></var>
+			</if>
+		</data>
+	</object>
+
+	<object>
+		<name>ImportItem</name>
+		<data>
+			<var><type>INDEX</type><name>ClassPackage</name></var>
+			<var><type>INDEX</type><name>Class</name></var>
+			<var><type>INT32</type><name>Package</name></var>
+			<var><type>INDEX</type><name>ObjectName</name></var>
+		</data>
+	</object>
+
+</package>

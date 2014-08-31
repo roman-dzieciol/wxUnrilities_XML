@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tables>
+	<version>
+		<name>UT2004</name>
+	</version>
+
+	<table>
+		<name>ExportTable</name>
+		<path>Header/ExportTable/Table</path>
+		<column name="Offset" align="left" size="Hex" sort="number">
+			<printer id="Format" param="0x%.8x"/>
+			<printer id="TypeOffset"/>
+		</column>
+		<column name="#" align="left" size="Index" sort="number">
+			<printer id="Format" param="%d"/>
+			<printer id="TypeUnsigned"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="number">
+			<printer id="TypeChild" param="ExportItem/Package"/>
+			<printer id="TypeString"/>
+		</column>
+		<column name="Package" align="left" size="NameLonger" sort="nocase">
+			<printer id="TypeChild" param="ExportItem/Package"/>
+			<printer id="TypeObjRef"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="number">
+			<printer id="TypeChild" param="ExportItem/ObjectName"/>
+			<printer id="TypeString"/>
+		</column>
+		<column name="ObjectName" align="left" size="NameLonger" sort="nocase">
+			<printer id="TypeChild" param="ExportItem/ObjectName"/>
+			<printer id="TypeObjName"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="number">
+			<printer id="TypeChild" param="ExportItem/Class"/>
+			<printer id="TypeString"/>
+		</column>
+		<column name="Class" align="left" size="NameLonger" sort="nocase">
+			<printer id="TypeChild" param="ExportItem/Class"/>
+			<printer id="TypeObjRef"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="number">
+			<printer id="TypeChild" param="ExportItem/Super"/>
+			<printer id="TypeString"/>
+		</column>
+		<column name="Super" align="left" size="NameLonger" sort="nocase">
+			<printer id="TypeChild" param="ExportItem/Super"/>
+			<printer id="TypeObjRef"/>
+		</column>
+		<column name="SerialSize" align="right" size="Dec" sort="number">
+			<printer id="TypeChild" param="ExportItem/SerialSize"/>
+			<printer id="TypeString"/>
+		</column>
+		<column name="SerialOffset" align="left" size="Hex" sort="number">
+			<sorter id="number"/>
+			<printer id="TypeChild" param="ExportItem/SerialOffset"/>
+			<printer id="Optional"/>
+			<printer id="Format" param="0x%.8x"/>
+			<printer id="TypeUnsigned"/>
+		</column>
+		<column name="ObjectFlags" align="left" size="NameVeryLong" sort="case">
+			<printer id="TypeChild" param="ExportItem/ObjectFlags"/>
+			<printer id="Flags" param="Object"/>
+			<printer id="TypeUnsigned"/>
+		</column>
+			
+	</table>
+	
+	
+<!--
+
+-->
+</tables>

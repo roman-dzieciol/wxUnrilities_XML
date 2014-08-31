@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<object>
+		<name>Header</name>
+		<data>
+			<var id="DWORD"		name="Signature"		data="THex"			text="TUnsigned" />
+			<assert test="Eq(Var(Signature),0x9E2A83C1)"/>
+			<var id="WORD"		name="Version"			data="TUnsigned"	text="THex" />
+			<var id="WORD"		name="License"			data="TUnsigned"	text="THex" />
+			<var id="DWORD"		name="Flags"			data="THex"			text="TPackageFlags" />
+			<var id="OBJECT"	name="NameTable"		data=""				text="" />
+			<var id="OBJECT"	name="ExportTable"		data=""				text="" />
+			<var id="OBJECT"	name="ImportTable"		data=""				text="" />
+			<var id="GUID"		name="GUID"				data=""				text="TString" />
+			<var id="OBJECT"	name="GenerationTable"	data=""				text="" />
+
+		</data>
+	</object>
+	
+	<object>
+		<name>GenerationTable</name>
+		<data>
+			<var id="DWORD" name="Count" data="TUnsigned" text="THex" />
+			<array count="Var(Count)">
+				<name>Table</name>
+				<var id="DWORD"	name="ExportCount"	data="TUnsigned"	text="THex" />
+				<var id="DWORD"	name="NameCount"	data="TUnsigned"	text="THex" />
+			</array>
+		</data>
+	</object>	
+
+	<object>
+		<name>NameTable</name>
+		<data>
+			<var id="DWORD"	name="Count"	data="TUnsigned"	text="THex" />
+			<var id="DWORD"	name="Offset"	data="TUnsigned"	text="THex" />
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var id="OBJECT" name="NameItem" data="" text="" />
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>ExportTable</name>
+		<data>
+			<var id="DWORD"	name="Count"	data="TUnsigned"	text="THex" />
+			<var id="DWORD"	name="Offset"	data="TUnsigned"	text="THex" />
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var id="OBJECT" name="ExportItem" data="" text="" />
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>ImportTable</name>
+		<data>
+			<var id="DWORD"	name="Count"	data="TUnsigned"	text="THex" />
+			<var id="DWORD"	name="Offset"	data="TUnsigned"	text="THex" />
+			<offset loc="Var(Offset)">
+				<array count="Var(Count)">
+					<name>Table</name>
+					<var id="OBJECT" name="ImportItem" data="" text="" />
+				</array>
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>NameItem</name>
+		<data>
+			<var id="LASCIIZ"	name="Name"		data=""		text="TString" />
+			<var id="DWORD"		name="Flags"	data="THex"	text="TObjectFlags" />
+		</data>
+	</object>
+
+	<object>
+		<name>ExportItem</name>
+		<data>
+			<var id="INDEX"	name="Class"		data="TSigned"		text="TObjRef" />
+			<var id="INDEX"	name="Super"		data="TSigned"		text="TObjRef" />
+			<var id="INT32"	name="Package"		data="TSigned"		text="TObjRef" />
+			<var id="INDEX"	name="ObjectName"	data="TUnsigned"	text="TObjName" />
+			<var id="DWORD"	name="ObjectFlags"	data="THex"			text="TObjectFlags" />
+			<var id="INDEX"	name="SerialSize"	data="TUnsigned"	text="THex" />
+			<if test="Neq(Var(SerialSize),0)">
+				<var id="INDEX"		name="SerialOffset"	data="THex"	text="TUnsigned" />
+				<!--<var id="OBJIND"	name="SerialObject"	data=""	text="" />-->
+			</if>
+		</data>
+	</object>
+	
+	<object>
+		<name>SerialObject</name>
+		<data>
+			<offset loc="Var(SerialOffset)">
+				<if test="HasFlag(Var(ObjectFlags),Object,HasStack)">
+					<var id="OBJECT"	name="StateFrame"	data=""	text="" />
+				</if>
+				<if test="Neq(Var(Class),0)">
+					<var id="PROP"		name="Properties"	data=""	text="" />
+				</if>
+				<var id="OBJVAR"	name="Class"	data=""	text="" />
+			</offset>
+		</data>
+	</object>
+
+	<object>
+		<name>ImportItem</name>
+		<data>
+			<var id="INDEX"	name="ClassPackage"	data="TUnsigned"	text="TObjName" />
+			<var id="INDEX"	name="Class"		data="TUnsigned"	text="TObjName" />
+			<var id="INT32"	name="Package"		data="TSigned"		text="TObjRef" />
+			<var id="INDEX"	name="ObjectName"	data="TUnsigned"	text="TObjName" />
+		</data>
+	</object>
+
+</package>

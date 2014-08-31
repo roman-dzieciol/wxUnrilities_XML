@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<object>
+		<name>Header</name>
+		<data>
+			<var><type>DWORD</type><name>Signature</name></var>
+			<assert test="Var(Signature)=0x9E2A83C1"/>
+			<var><type>WORD</type><name>PackageVersion</name></var>
+			<var><type>WORD</type><name>LicenseMode</name></var>
+			<var><type>DWORD</type><name>PackageFlags</name></var>
+			<var><type>OBJECT</type><name>NameTable</name></var>
+			<var><type>OBJECT</type><name>ExportTable</name></var>
+			<var><type>OBJECT</type><name>ImportTable</name></var>
+		</data>
+	</object>
+	
+</package>

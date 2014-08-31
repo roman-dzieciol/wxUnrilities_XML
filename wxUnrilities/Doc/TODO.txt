@@ -1,0 +1,27 @@
+
+                                 Unrilities 0.3
+
+               Copyright (C) 2005 Roman Dzieciol <neai at o2.pl>
+                  http://sourceforge.net/projects/unrilities/
+
+-------------------------------------------------------------------------------
+                                     TODO
+-------------------------------------------------------------------------------
+
+* Future
+- Property info byte shouldn't auto expand
+
+
+* 11/26/2005
+- property data reader
+- convert text printers to auto_ptr
+
+
+* OLD
+- Find out how to handle invalid struct/array property size.
+- Add read range guard feature to pkgArchive.
+- Find out why wxTreeListCtrl is sometimes crashing on that Hilight function.
+- Serializer+Archive decoupling or integration.
+
+
+-------------------------------------------------------------------------------

@@ -1,0 +1,19 @@
+
+                                 Unrilities 0.3
+
+               Copyright (C) 2005 Roman Dzieciol <neai at o2.pl>
+                  http://sourceforge.net/projects/unrilities/
+
+-------------------------------------------------------------------------------
+                                  ChangeLog
+-------------------------------------------------------------------------------
+
+* 11/26/2005
+- "break" (to debugger) command added to xml syntax
+
+* 11/25/2005
+- Rebuilt for wxWidgets 2.6.2 and latest TreeListCtrl
+
+
+
+-------------------------------------------------------------------------------

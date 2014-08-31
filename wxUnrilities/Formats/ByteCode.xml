@@ -1,0 +1,481 @@
+<?xml version="1.0" encoding="utf-8"?>
+<bytecode>
+	<group>
+		<name>Variable references.</name>	
+		<token>
+			<code>0x00</code>
+			<name>EX_LocalVariable</name>
+			<desc>A local variable.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object Name</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x01</code>
+			<name>EX_InstanceVariable</name>
+			<desc>An object variable.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object Name</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x02</code>
+			<name>EX_DefaultVariable</name>
+			<desc>Default variable for a concrete object.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object Name</name></item>	
+				<text>default.%1</text>
+			</data>
+		</token>
+	</group>
+	<group>
+		<name>Tokens.</name>
+		<token>
+			<code>0x04</code>
+			<name>EX_Return</name>
+			<desc>Return from function.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Result</name></item>	
+				<text>return %1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x05</code>
+			<name>EX_Switch</name>
+			<desc>Switch.</desc>
+			<data>
+				<item><type>BYTE</type><name>Condition Size</name></item>	
+				<item><type>TOKEN</type><name>Condition</name></item>	
+				<text>switch(%2){</text>
+			</data>
+		</token>
+		<token>
+			<code>0x06</code>
+			<name>EX_Jump</name>
+			<desc>Goto a local address in code.</desc>
+			<data>
+				<item><type>WORD</type><name>Offset</name></item>	
+				<text>goto %1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x07</code>
+			<name>EX_JumpIfNot</name>
+			<desc>Goto if not expression.</desc>
+			<data>
+				<item><type>WORD</type><name>Offset</name></item>	
+				<item><type>TOKEN</type><name>Condition</name></item>	
+				<text>if(!%2) goto %1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x08</code>
+			<name>EX_Stop</name>
+			<desc>Stop executing state code.</desc>
+		</token>
+		<token>
+			<code>0x09</code>
+			<name>EX_Assert</name>
+			<desc>Assertion.</desc>
+			<data>
+				<item><type>WORD</type><name>Line</name></item>	
+				<item><type>TOKEN</type><name>Condition</name></item>	
+				<text>Assert(%2)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x0B</code>
+			<name>EX_Nothing</name>
+			<desc>No operation.</desc>
+		</token>
+		<token>
+			<code>0x0C</code>
+			<name>EX_LabelTable</name>
+			<desc>Table of labels.</desc>
+			<data>
+				<text>Unsupported</text>
+			</data>
+		</token>
+		<token>
+			<code>0x0D</code>
+			<name>EX_GotoLabel</name>
+			<desc>Goto a label.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Label</name></item>	
+				<text>goto (%1)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x0E</code>
+			<name>EX_EatString</name>
+			<desc>Ignore a dynamic string.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x0F</code>
+			<name>EX_Let</name>
+			<desc>Assign an arbitrary size value to a variable.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Variable</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%1 = %2</text>
+			</data>
+		</token>
+		<token>
+			<code>0x10</code>
+			<name>EX_DynArrayElement</name>
+			<desc>Dynamic array element.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Index</name></item>	
+				<item><type>TOKEN</type><name>Array</name></item>	
+				<text>%2[%1]</text>
+			</data>
+		</token>
+		<token>
+			<code>0x11</code>
+			<name>EX_New</name>
+			<desc>New object allocation.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Outer</name></item>	
+				<item><type>TOKEN</type><name>Name</name></item>	
+				<item><type>TOKEN</type><name>Flags</name></item>	
+				<item><type>TOKEN</type><name>Class</name></item>	
+				<text>new(%1,%2,%3) %4</text>
+			</data>
+		</token>
+		<token>
+			<code>0x12</code>
+			<name>EX_ClassContext</name>
+			<desc>Class default metaobject context.</desc>
+			<data>
+				<item><type>INDEX</type><name>Class</name></item>	
+				<item><type>WORD</type><name>Skip</name></item>	
+				<item><type>BYTE</type><name>Size</name></item>	
+				<item><type>INDEX</type><name>Object</name></item>	
+				<text>%1.%4</text>
+			</data>
+		</token>
+		<token>
+			<code>0x13</code>
+			<name>EX_MetaCast</name>
+			<desc>Metaclass cast.</desc>
+			<data>
+				<item><type>INDEX</type><name>Class</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>class&lt;%1&gt;(%2)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x14</code>
+			<name>EX_LetBool</name>
+			<desc>Let boolean variable.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Variable</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%1 = %2</text>
+			</data>
+		</token>
+		<token>
+			<code>0x16</code>
+			<name>EX_EndFunctionParms</name>
+			<desc>End of function call parameters.</desc>
+			<data>
+				<text>)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x17</code>
+			<name>EX_Self</name>
+			<desc>Self object.</desc>
+			<data>
+				<text>self</text>
+			</data>
+		</token>
+		<token>
+			<code>0x18</code>
+			<name>EX_Skip</name>
+			<desc>Skippable expression.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Skip</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%2</text>
+			</data>
+		</token>
+		<token>
+			<code>0x19</code>
+			<name>EX_Context</name>
+			<desc>Call a function through an object context.</desc>
+		</token>
+		<token>
+			<code>0x1A</code>
+			<name>EX_ArrayElement</name>
+			<desc>Array element.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Index</name></item>	
+				<item><type>TOKEN</type><name>Array</name></item>	
+				<text>%2[%1]</text>
+			</data>
+		</token>
+		<token>
+			<code>0x1B</code>
+			<name>EX_VirtualFunction</name>
+			<desc>A function call with parameters.</desc>
+			<data>
+				<item><type>INDEX</type><name>Name</name></item>	
+				<text>%1(</text>
+			</data>
+		</token>
+		<token>
+			<code>0x1C</code>
+			<name>EX_FinalFunction</name>
+			<desc>A prebound function call with parameters.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object</name></item>	
+				<text>%1(</text>
+			</data>
+		</token>
+		<token>
+			<code>0x1D</code>
+			<name>EX_IntConst</name>
+			<desc>Int constant.</desc>
+			<data>
+				<item><type>DWORD</type><name>Value</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x1E</code>
+			<name>EX_FloatConst</name>
+			<desc>Floating point constant.</desc>
+			<data>
+				<item><type>FLOAT</type><name>Value</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x1F</code>
+			<name>EX_StringConst</name>
+			<desc>String constant.</desc>
+			<data>
+				<item><type>ASCIIZ</type><name>Value</name></item>	
+				<text>"%1"</text>
+			</data>
+		</token>
+		<token>
+			<code>0x20</code>
+			<name>EX_ObjectConst</name>
+			<desc>An object constant.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object</name></item>	
+				<text>ObjectClass'ObjectName'</text>
+			</data>
+		</token>
+		<token>
+			<code>0x21</code>
+			<name>EX_NameConst</name>
+			<desc>A name constant.</desc>
+			<data>
+				<item><type>INDEX</type><name>Name</name></item>	
+				<text>'%1'</text>
+			</data>
+		</token>
+		<token>
+			<code>0x22</code>
+			<name>EX_RotationConst</name>
+			<desc>A rotation constant.</desc>
+			<data>
+				<item><type>DWORD</type><name>Pitch</name></item>	
+				<item><type>DWORD</type><name>Yaw</name></item>
+				<item><type>DWORD</type><name>Roll</name></item>
+				<text>rot(%1,%2,%3)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x23</code>
+			<name>EX_VectorConst</name>
+			<desc>A vector constant.</desc>
+			<data>
+				<item><type>DWORD</type><name>X</name></item>	
+				<item><type>DWORD</type><name>Y</name></item>
+				<item><type>DWORD</type><name>Z</name></item>
+				<text>vect(%1,%2,%3)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x24</code>
+			<name>EX_ByteConst</name>
+			<desc>A byte constant.</desc>
+		</token>
+		<token>
+			<code>0x25</code>
+			<name>EX_IntZero</name>
+			<desc>Zero.</desc>
+			<data>
+				<text>0</text>
+			</data>
+		</token>
+		<token>
+			<code>0x26</code>
+			<name>EX_IntOne</name>
+			<desc>One.</desc>
+			<data>
+				<text>1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x27</code>
+			<name>EX_True</name>
+			<desc>Bool True.</desc>
+			<data>
+				<text>True</text>
+			</data>
+		</token>
+		<token>
+			<code>0x28</code>
+			<name>EX_False</name>
+			<desc>Bool False.</desc>
+			<data>
+				<text>False</text>
+			</data>
+		</token>
+		<token>
+			<code>0x29</code>
+			<name>EX_NativeParm</name>
+			<desc>Native function parameter offset.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object</name></item>	
+				<text>ObjectName</text>
+			</data>
+		</token>
+		<token>
+			<code>0x2A</code>
+			<name>EX_NoObject</name>
+			<desc>NoObject.</desc>
+		</token>
+		<token>
+			<code>0x2C</code>
+			<name>EX_IntConstByte</name>
+			<desc>Int constant that requires 1 byte.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x2D</code>
+			<name>EX_BoolVariable</name>
+			<desc>A bool variable which requires a bitmask.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>%1</text>
+			</data>
+		</token>
+		<token>
+			<code>0x2E</code>
+			<name>EX_DynamicCast</name>
+			<desc>Safe dynamic class casting.</desc>
+			<data>
+				<item><type>INDEX</type><name>Class</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>ClassName(Value)</text>
+			</data>
+		</token>
+		<token>
+			<code>0x2F</code>
+			<name>EX_Iterator</name>
+			<desc>Begin an iterator operation.</desc>
+			<data>
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<item><type>WORD</type><name>Offset</name></item>	
+				<text>foreach %1{</text>
+			</data>
+		</token>
+		<token>
+			<code>0x30</code>
+			<name>EX_IteratorPop</name>
+			<desc>Pop an iterator level.</desc>
+		</token>
+		<token>
+			<code>0x31</code>
+			<name>EX_IteratorNext</name>
+			<desc>Go to next iteration.</desc>
+			<data>
+				<text>}</text>
+			</data>
+		</token>
+		<token>
+			<code>0x32</code>
+			<name>EX_StructCmpEq</name>
+			<desc>Struct binary compare-for-equal.</desc>
+			<data>
+				<item><type>INDEX</type><name>Struct</name></item>	
+				<item><type>TOKEN</type><name>ValueLeft</name></item>	
+				<item><type>TOKEN</type><name>ValueRight</name></item>	
+				<text>%2 == %3</text>
+			</data>
+		</token>
+		<token>
+			<code>0x33</code>
+			<name>EX_StructCmpNe</name>
+			<desc>Struct binary compare-for-unequal.</desc>
+			<data>
+				<item><type>INDEX</type><name>Struct</name></item>	
+				<item><type>TOKEN</type><name>ValueLeft</name></item>	
+				<item><type>TOKEN</type><name>ValueRight</name></item>	
+				<text>%2 != %3</text>
+			</data>
+		</token>
+		<token>
+			<code>0x34</code>
+			<name>EX_UnicodeStringConst</name>
+			<desc>Unicode string constant.</desc>
+			<data>
+				<item><type>UNICODEZ</type><name>Value</name></item>	
+				<text>"%1"</text>
+			</data>
+		</token>
+		<token>
+			<code>0x36</code>
+			<name>EX_StructMember</name>
+			<desc>Struct member.</desc>
+			<data>
+				<item><type>INDEX</type><name>Object</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text>Value.ObjectName</text>
+			</data>
+		</token>
+		<token>
+			<code>0x38</code>
+			<name>EX_GlobalFunction</name>
+			<desc>Call non-state version of a function.</desc>
+			<data>
+				<item><type>INDEX</type><name>Name</name></item>	
+				<text>global.Name(</text>
+			</data>
+		</token>
+		<token>
+			<code>0x39</code>
+			<name>EX_TypeCast</name>
+			<desc>Native TypeCast.</desc>
+			<data>
+				<item><type>BYTE</type><name>Type of native typecast</name></item>	
+				<item><type>TOKEN</type><name>Value</name></item>	
+				<text></text>
+			</data>
+		</token>
+		<token>
+			<code>0x47</code>
+			<name>EX_End</name>
+			<desc>Marks end of bytecode in a function.</desc>
+		</token>
+	</group>
+	<nativefunctions>
+		<extended>0x60</extended>
+		<first>0x70</first>
+	</nativefunctions>
+</bytecode>	

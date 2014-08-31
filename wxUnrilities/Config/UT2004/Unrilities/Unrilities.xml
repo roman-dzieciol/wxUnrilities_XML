@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<unrilities>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<sizes>
+		<size width="25" 	name="HexByte" />
+		<size width="20" 	name="Digit" />
+		<size width="45" 	name="Index" />
+		<size width="75" 	name="Hex" />
+		<size width="75" 	name="Dec" />
+		<size width="75" 	name="NameVeryShort" />
+		<size width="100" 	name="NameShort" />
+		<size width="150" 	name="NameShorter" />
+		<size width="200" 	name="Name" />
+		<size width="275" 	name="NameLonger" />
+		<size width="375" 	name="NameLong" />
+		<size width="500" 	name="NameVeryLong" />
+		<size width="220" 	name="NavTree" />
+		<size width="-250" 	name="HexTreeSplit" />
+		<size width="50" 	name="HexTreeSplitScale" />
+		<size width="0" 	name="HexTreeFontDelta" />
+		<size width="16" 	name="HexTreeColumns" />
+		
+	</sizes>
+
+	<formats>
+		<format text="%d" name="Index" />
+		<format text="%d" name="Size" />
+		<format text="0x%.8x" name="Offset" />
+		<format text="%.2X %.2X %.2X %.2X" name="RGBAh" />
+		<format text="%.2X" name="HexByte" />
+		<format text="0x%.2X" name="Hex2" />
+		<format text="%c" name="HexChar" />
+	</formats>
+	
+	<paths>
+		<path name="G.NameTable.Array" text="Header/NameTable/Table" />
+		<path name="G.ExportTable.Array" text="Header/ExportTable/Table" />
+		<path name="G.ImportTable.Array" text="Header/ImportTable/Table" />
+		
+		<path name="I.NameItem.Name" text="NameItem/Name" />
+		
+		<path name="I.ImportItem.ObjectName" text="ImportItem/ObjectName" />
+		<path name="I.ImportItem.Package" text="ImportItem/Package" />		
+		
+		<path name="I.ExportItem.SerialSize" text="ExportItem/SerialSize" />
+		<path name="I.ExportItem.Offset" text="ExportItem/SerialOffset" />
+		<path name="I.ExportItem.Class" text="ExportItem/Class" />
+		<path name="I.ExportItem.Package" text="ExportItem/Package" />
+		<path name="I.ExportItem.ObjectName" text="ExportItem/ObjectName" />
+	</paths>
+	
+	<printers>
+		<preset>
+			<name>TBool</name>
+			<printer id="Bool"/>
+			<printer id="TSigned"/>
+		</preset>
+		<preset>
+			<name>THex</name>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TUnsigned"/>
+		</preset>
+		<preset>
+			<name>THex2</name>
+			<printer id="FormatUnsigned" param="Hex2"/>
+			<printer id="TUnsigned"/>
+		</preset>
+		<preset>
+			<name>TColorHex</name>
+			<printer id="Color" param="RGBAh"/>
+			<printer id="TUnsigned"/>
+		</preset>
+		<preset>
+			<name>TOffsetFormatted</name>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</preset>
+		<preset>
+			<name>TOptionalOffsetFormatted</name>
+			<printer id="Optional"/>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</preset>
+		<preset>
+			<name>TPropertyData</name>
+			<printer id="TChild" param="Data"/>
+			<printer id="Optional"/>
+			<printer id="TText"/>
+		</preset>
+	</printers>
+	
+	
+</unrilities>

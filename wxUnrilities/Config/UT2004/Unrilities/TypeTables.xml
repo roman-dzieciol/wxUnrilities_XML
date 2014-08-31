@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tables>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<table>
+		<name>Names</name>
+		<path>Header/NameTable/Table</path>
+		<column name="Offset" align="left" size="Hex" sort="num">
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</column>
+		<column name="#" align="left" size="Hex" sort="num">
+			<printer id="TString"/>
+		</column>
+		<column name="Name" align="left" size="NameLong" sort="nocase">
+			<printer id="TChild" param="NameItem/Name"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Flags" align="left" size="Hex" sort="case">
+			<printer id="TChild" param="NameItem/Flags"/>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TUnsigned"/>
+		</column>
+		<column name="Flags" align="left" size="NameVeryLong" sort="case">
+			<printer id="TChild" param="NameItem/Flags"/>
+			<printer id="Flags" param="Object"/>
+			<printer id="TUnsigned"/>
+		</column>
+	</table>
+
+
+	<table>
+		<name>Exports</name>
+		<path>Header/ExportTable/Table</path>
+		<column name="Offset" align="left" size="Hex" sort="num">
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</column>
+		<column name="#" align="left" size="Index" sort="num">
+			<printer id="TString"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ExportItem/Package"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Package" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ExportItem/Package"/>
+			<printer id="TObjRef"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ExportItem/ObjectName"/>
+			<printer id="TString"/>
+		</column>
+		<column name="ObjectName" align="left" size="Name" sort="nocase">
+			<printer id="TChild" param="ExportItem/ObjectName"/>
+			<printer id="TObjName"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ExportItem/Class"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Class" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ExportItem/Class"/>
+			<printer id="TObjRef"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ExportItem/Super"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Super" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ExportItem/Super"/>
+			<printer id="TObjRef"/>
+		</column>
+		<column name="SerialSize" align="right" size="Dec" sort="num">
+			<printer id="TChild" param="ExportItem/SerialSize"/>
+			<printer id="TString"/>
+		</column>
+		<column name="SerialOffset" align="left" size="Hex" sort="num">
+			<printer id="TChild" param="ExportItem/SerialOffset"/>
+			<printer id="Optional"/>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TUnsigned"/>
+		</column>
+		<column name="ObjectFlags" align="left" size="Hex" sort="case">
+			<printer id="TChild" param="ExportItem/ObjectFlags"/>
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TUnsigned"/>
+		</column>
+		<column name="ObjectFlags" align="left" size="NameVeryLong" sort="case">
+			<printer id="TChild" param="ExportItem/ObjectFlags"/>
+			<printer id="Flags" param="Object"/>
+			<printer id="TUnsigned"/>
+		</column>
+	</table>
+	
+	<table>
+		<name>Imports</name>
+		<path>Header/ImportTable/Table</path>
+		<column name="Offset" align="left" size="Hex" sort="num">
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</column>
+		<column name="#" align="left" size="Index" sort="num">
+			<printer id="TString"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ImportItem/Package"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Package" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ImportItem/Package"/>
+			<printer id="TObjRef"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ImportItem/ObjectName"/>
+			<printer id="TString"/>
+		</column>
+		<column name="ObjectName" align="left" size="Name" sort="nocase">
+			<printer id="TChild" param="ImportItem/ObjectName"/>
+			<printer id="TObjName"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ImportItem/ClassPackage"/>
+			<printer id="TString"/>
+		</column>
+		<column name="ClassPackage" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ImportItem/ClassPackage"/>
+			<printer id="TObjName"/>
+		</column>
+		<column name="# of" align="right" size="Index" sort="num">
+			<printer id="TChild" param="ImportItem/Class"/>
+			<printer id="TString"/>
+		</column>
+		<column name="Class" align="left" size="NameLonger" sort="nocase">
+			<printer id="TChild" param="ImportItem/Class"/>
+			<printer id="TObjName"/>
+		</column>
+	</table>
+	
+	<table>
+		<name>Generations</name>
+		<path>Header/GenerationTable/Table</path>
+		<column name="Offset" align="left" size="Hex" sort="num">
+			<printer id="FormatUnsigned" param="Offset"/>
+			<printer id="TOffset"/>
+		</column>
+		<column name="#" align="left" size="Hex" sort="num">
+			<printer id="TString"/>
+		</column>
+		<column name="ExportCount" align="left" size="Dec" sort="num">
+			<printer id="TChild" param="ExportCount"/>
+			<printer id="TString"/>
+		</column>
+		<column name="NameCount" align="left" size="Dec" sort="num">
+			<printer id="TChild" param="NameCount"/>
+			<printer id="TString"/>
+		</column>
+	</table>
+	
+
+<!--
+-->
+
+</tables>

@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<object>
+		<name>StateFrame</name>
+		<data>
+			<var id="INDEX"	name="Node"			data="TSigned"	text="TObjRef" />
+			<var id="INDEX"	name="StateNode"	data="TSigned"	text="TObjRef" />
+			<var id="QWORD"	name="ProbeMask"	data="THex"		text="" />
+			<var id="INT32"	name="LatentAction"	data="TSigned"	text="" />
+			<if test="Neq(Var(StateNode),0)">
+				<var id="INDEX"	name="Offset"	data="TSigned"	text="" />
+			</if>
+		</data>
+	</object>	
+	
+	<object>
+		<name>Field</name>
+		<data>
+			<var id="INDEX"	name="SuperField"	data="TSigned"	text="TObjRef" />
+			<var id="INDEX"	name="Next"			data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>Const</name>
+		<data>
+			<var id="OBJECT"	name="Field"	data="TUnsigned"	text="" />
+			<var id="LASCIIZ"	name="Constant"	data=""				text="TString" />
+		</data>
+	</object>
+	
+	<object>
+		<name>Enum</name>
+		<data>
+			<var id="OBJECT"	name="Field"	data=""				text="" />
+			<var id="INDEX"		name="Count"	data="TUnsigned"	text="" />
+			<array count="Var(Count)">
+				<name>Elements</name>
+				<var id="INDEX"	name="Name"	data="TUnsigned"	text="TObjName" />
+			</array>
+		</data>
+	</object>
+	
+	<object>
+		<name>Property</name>
+		<data>
+			<var id="OBJECT"	name="Field"			data=""				text="" />
+			<var id="WORD"		name="ArrayDimension"	data="TUnsigned"	text="" />
+			<var id="WORD"		name="ElementSize"		data="TUnsigned"	text="" />
+			<var id="DWORD"		name="PropertyFlags"	data="THex"			text="TPropertyFlags" />
+			<var id="INDEX"		name="Category"			data="TUnsigned"	text="TObjName" />
+			<if test="HasFlag(Var(PropertyFlags),Property,Net)">
+				<var id="WORD"	name="ReplicationOffset"	data="TUnsigned"	text="" />
+			</if>
+		</data>
+	</object>
+	
+	<object>
+		<name>Struct</name>
+		<data>
+			<var id="OBJECT"	name="Field"		data=""				text="" />
+			<var id="INDEX"		name="ScriptText"	data="TSigned"		text="TObjRef" />
+			<var id="INDEX"		name="Children"		data="TSigned"		text="TObjRef" />
+			<var id="INDEX"		name="FriendlyName"	data="TSigned"		text="TObjName" />
+			<var id="DWORD"		name="Unknown"		data="TUnsigned"	text="" />
+			<var id="DWORD"		name="Line"			data="TUnsigned"	text="" />
+			<var id="DWORD"		name="TextPos"		data="TUnsigned"	text="" />
+			<var id="DWORD"		name="ScriptSize"	data="TUnsigned"	text="" />
+			<if test="Neq(Var(ScriptSize),0)">
+				<var id="DWORD"		name="ByteCode"		data=""				text="" />
+			</if>
+		</data>
+	</object>
+	
+	<object>
+		<name>State</name>
+		<data>
+			<var id="OBJECT"	name="Struct"			data=""				text="" />
+			<var id="QWORD"		name="ProbeMask"		data="THex"			text="" />
+			<var id="QWORD"		name="IgnoreMask"		data="THex"			text="" />
+			<var id="WORD"		name="LabelTableOffset"	data="TUnsigned"	text="" />
+			<var id="DWORD"		name="StateFlags"		data="THex"			text="TStateFlags" />
+		</data>
+	</object>
+	
+	<object>
+		<name>Function</name>
+		<data>
+			<var id="OBJECT"	name="Struct"				data=""				text="" />
+			<var id="WORD"		name="NativeIndex"			data="TUnsigned"	text="" />
+			<var id="BYTE"		name="OperatorPrecedence"	data="TUnsigned"	text="" />
+			<var id="DWORD"		name="FunctionFlags"		data="THex"			text="TFunctionFlags" />
+		</data>
+	</object>
+	
+	<object>
+		<name>Class</name>
+		<data>
+			<var id="OBJECT"	name="State"				data=""				text="" />
+			<var id="DWORD"		name="ClassFlags"			data="THex"			text="TClassFlags" />
+			<var id="GUID"		name="ClassGuid"			data=""				text="TString" />
+			<var id="INDEX"		name="DependenciesCount"	data="TUnsigned"	text="" />
+			<array count="Var(DependenciesCount)">
+				<name>Dependencies</name>
+				<var id="INDEX"		name="Class"				data="TSigned"		text="TObjRef" />
+				<var id="DWORD"		name="Deep"					data="TUnsigned"	text="" />
+				<var id="DWORD"		name="ScriptTextCRC"		data="THex"			text="" />
+			</array>
+			<var id="INDEX"		name="PackageImportsCount"	data="TUnsigned"	text="" />
+			<array count="Var(PackageImportsCount)">
+				<name>PackageImports</name>
+				<var id="INDEX"		name="PackageImport"		data="TSigned"		text="TObjRef" />
+			</array>
+			<var id="INDEX"		name="ClassWithin"			data="TSigned"		text="TObjRef" />
+			<var id="INDEX"		name="ClassConfigName"		data="TUnsigned"	text="TObjName" />
+			<var id="INDEX"		name="HideCategoriesCount"	data="TUnsigned"	text="" />			
+			<array count="Var(HideCategoriesCount)">
+				<name>HideCategories</name>
+				<var id="INDEX"		name="HideCategory"			data="TSigned"		text="TObjName" />			
+			</array>
+			<var id="OBJECT"		name="Properties"			data=""			text="" />
+		</data>
+	</object>
+	
+	
+	<!-- SPECIAL ########################################################### -->
+	
+	
+	<object>
+		<name>Properties</name>
+		<data>
+			<var id="INDEX"	name="NoPropsPlease"	data="TSigned"	text="TObjName" />
+		</data>
+	</object>	
+	
+	<object>
+		<name>ByteCode</name>
+		<data>
+			<var id="INDEX"	name="ByteCode"	data="TSigned"	text="" />
+		</data>
+	</object>	
+	
+	<object>
+		<name>TextBuffer</name>
+		<data>
+			<var id="DWORD"		name="Pos"		data="TUnsigned"	text="" />
+			<var id="DWORD"		name="Top"		data="TUnsigned"	text="" />
+			<var id="LASCIIZ"	name="Text"		data=""				text="TString" />
+		</data>
+	</object>
+	
+	<object>
+		<name>Palette</name>
+		<data>
+			<var id="INDEX"		name="ColorCount"	data="TUnsigned"	text="" />			
+			<array count="Var(ColorCount)">
+				<name>Colors</name>
+				<var id="DWORD"		name="Color"	data="TColorHex" 	text="" />			
+			</array>
+		</data>
+	</object>
+	
+	<object>
+		<name>Font</name>
+		<data>
+			<var id="INDEX"		name="CharactersPerPage"	data="TUnsigned"	text="" />			
+			<array count="Var(CharactersPerPage)">
+				<name>Characters</name>
+				<var id="DWORD"		name="X"		data="TUnsigned" 	text="" />	
+				<var id="DWORD"		name="Y"		data="TUnsigned" 	text="" />	
+				<var id="DWORD"		name="Width"	data="TUnsigned" 	text="" />	
+				<var id="DWORD"		name="Height"	data="TUnsigned" 	text="" />	
+				<var id="BYTE"		name="Texture"	data="TUnsigned" 	text="" />			
+			</array>
+			<var id="INDEX"		name="TexturesCount"	data="TUnsigned"	text="" />			
+			<array count="Var(TexturesCount)">
+				<name>Textures</name>
+				<var id="INDEX"		name="Texture"		data="TSigned" 	text="TObjRef" />		
+			</array>	
+			<var id="INDEX"		name="Kerning"	data="TUnsigned"	text="" />	
+			<var id="DWORD"		name="UNKNOWN0"	data="TUnsigned"	text="" />	
+			<var id="DWORD"		name="UNKNOWN1"	data="TUnsigned"	text="" />	
+		</data>
+	</object>
+	
+	
+	<!-- PROPERTIES ######################################################## -->
+	
+	
+	<object>
+		<name>ByteProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""			text="" />
+			<var id="INDEX"		name="EnumType"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>ObjectProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"		data=""			text="" />
+			<var id="INDEX"		name="ObjectType"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>FixedArrayProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""				text="" />
+			<var id="INDEX"		name="Inner"	data="TSigned"		text="TObjRef" />
+			<var id="INDEX"		name="Count"	data="TUnsigned"	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>ArrayProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""			text="" />
+			<var id="INDEX"		name="Inner"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>MapProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""			text="" />
+			<var id="INDEX"		name="Key"		data="TSigned"	text="TObjRef" />
+			<var id="INDEX"		name="Value"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>ClassProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""			text="" />
+			<var id="INDEX"		name="Class"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>
+	
+	<object>
+		<name>StructProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"		data=""			text="" />
+			<var id="INDEX"		name="StructType"	data="TSigned"	text="TObjRef" />
+		</data>	
+	</object>
+	
+	<object>
+		<name>BoolProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>IntProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>FloatProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>NameProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>StrProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>StringProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>PointerProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""	text="" />
+		</data>
+	</object>
+	
+	<object>
+		<name>DelegateProperty</name>
+		<data>
+			<var id="OBJECT"	name="Property"	data=""			text="" />
+			<var id="INDEX"		name="Event"	data="TSigned"	text="TObjRef" />
+		</data>
+	</object>	
+
+</package>

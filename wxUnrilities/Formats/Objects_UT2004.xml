@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<objects>
+	<default>Generic</default>
+	
+	<object>
+		<name>Generic</name>
+		<data>
+			<if test="HasFlag(Export(Flags),HasStack)">
+				<var><type>OBJECT</type><name>StateFrame</name></var>
+			</if>
+			<if test="Neq(Export(Class),0)">
+				<var><type>OBJECT</type><name>Properties</name></var>
+			</if>
+		</data>
+	</object>
+	
+	<object>
+		<name>StateFrame</name>
+		<data>
+			<var><type>INDEX</type><name>Node</name></var>
+			<var><type>INDEX</type><name>StateNode</name></var>
+			<var><type>QWORD</type><name>ProbeMask</name></var>
+			<var><type>INT</type><name>LatentAction</name></var>
+			<if test="Neq(Var(LatentAction),0)">
+				<var><type>INDEX</type><name>Offset</name></var>
+			</if>
+		</data>
+	</object>
+	
+	<object>
+		<name>Field</name>
+		<data>
+			<var><type>INDEX</type><name>SuperField</name></var>
+			<var><type>INDEX</type><name>Next</name></var>
+		</data>
+	</object>
+	
+	<object>
+		<name>Struct</name>
+		<data>
+			<var><type>OBJECT</type><name>Field</name></var>
+			<var><type>INDEX</type><name>ScriptText</name></var>
+			<var><type>INDEX</type><name>Children</name></var>
+			<var><type>INDEX</type><name>FriendlyName</name></var>
+			<var><type>DWORD</type><name>Unknown</name></var>
+			<var><type>DWORD</type><name>Line</name></var>
+			<var><type>DWORD</type><name>TextPos</name></var>
+			<var><type>DWORD</type><name>ScriptSize</name></var>
+			<var><type>OBJECT</type><name>ByteCode</name></var>
+		</data>
+	</object>
+	
+	<object>
+		<name>State</name>
+		<data>
+			<var><type>OBJECT</type><name>Struct</name></var>
+			<var><type>QWORD</type><name>ProbeMask</name></var>
+			<var><type>QWORD</type><name>IgnoreMask</name></var>
+			<var><type>WORD</type><name>LabelTableOffset</name></var>
+			<var><type>DWORD</type><name>StateFlags</name></var>
+		</data>
+	</object>
+	
+	<object>
+		<name>Dependency</name>
+		<data>
+			<var><type>INDEX</type><name>Class</name></var>
+			<var><type>DWORD</type><name>Deep</name></var>
+			<var><type>DWORD</type><name>ScriptTextCRC</name></var>
+		</data>
+	</object>
+	
+	<object>
+		<name>Class</name>
+		<data>
+			<var><type>OBJECT</type><name>State</name></var>
+			<var><type>DWORD</type><name>ClassFlags</name></var>
+			<var><type>GUID</type><name>ClassGuid</name></var>
+			<var><type>INDEX</type><name>DependenciesCount</name></var>
+			<array count="Var(DependenciesCount)">
+				<name>Dependencies</name>
+				<var><type>INDEX</type><name>Class</name></var>
+				<var><type>DWORD</type><name>Deep</name></var>
+				<var><type>DWORD</type><name>ScriptTextCRC</name></var>
+			</array>
+			<var><type>INDEX</type><name>PackageImportsCount</name></var>
+			<array count="Var(PackageImportsCount)">
+				<name>PackageImports</name>
+				<var><type>INDEX</type><name>PackageImport</name></var>
+			</array>
+			<var><type>INDEX</type><name>ClassWithin</name></var>
+			<var><type>INDEX</type><name>ClassConfigName</name></var>
+			<var><type>INDEX</type><name>HideCategoriesCount</name></var>			
+			<array count="Var(HideCategoriesCount)">
+				<name>HideCategories</name>
+				<var><type>INDEX</type><name>HideCategories</name></var>			
+			</array>
+		</data>
+	</object>
+	
+	<object>
+		<name>Function</name>
+		<data>
+			<var><type>OBJECT</type><name>Struct</name></var>
+			<var><type>WORD</type><name>NativeIndex</name></var>
+			<var><type>BYTE</type><name>OperatorPrecedence</name></var>
+			<var><type>DWORD</type><name>FunctionFlags</name></var>
+		</data>
+	</object>
+	
+	
+	
+</objects>

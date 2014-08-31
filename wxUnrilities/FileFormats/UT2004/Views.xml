@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<views>
+	<version>
+		<name>UT2004</name>
+	</version>
+	
+	<sizes>
+		<size width="45" name="Index" />
+		<size width="75" name="Hex" />
+		<size width="75" name="Dec" />
+		<size width="75" name="NameVeryShort" />
+		<size width="100" name="NameShort" />
+		<size width="150" name="NameShorter" />
+		<size width="200" name="Name" />
+		<size width="275" name="NameLonger" />
+		<size width="375" name="NameLong" />
+		<size width="500" name="NameVeryLong" />
+	</sizes>
+
+</views>
